@@ -1,45 +1,42 @@
-//your JS code here. If required.
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
-const rememberCheckbox = document.getElementById('checkbox');
-const submitBtn = document.getElementById('submit');
-const existingBtn = document.getElementById('existing');
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const rememberCheckbox = document.getElementById("checkbox");
+const submitBtn = document.getElementById("submit");
+const existingBtn = document.getElementById("existing");
 
-// 1. Function to check localStorage and toggle the "Existing" button
-function checkExistingUser() {
-    if (localStorage.getItem('username')) {
-        existingBtn.style.display = 'block';
-    } else {
-        existingBtn.style.display = 'none';
-    }
+// 1. Function to show/hide the 'existing user' button
+function updateUI() {
+  if (localStorage.getItem("username")) {
+    existingBtn.style.display = "block";
+  } else {
+    existingBtn.style.display = "none";
+  }
 }
 
-// 2. Handle Form Submission
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Stop form from refreshing the page
-    
-    const username = usernameInput.value;
-    const password = passwordInput.value;
+// 2. Handle the "Submit" button click
+submitBtn.addEventListener("click", (event) => {
+  event.preventDefault(); // Stop form from refreshing the page
 
-    if (rememberCheckbox.checked) {
-        // Save to localStorage
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-    } else {
-        // Clear from localStorage
-        localStorage.removeItem('username');
-        localStorage.removeItem('password');
-    }
+  const userVal = usernameInput.value;
+  const passVal = passwordInput.value;
 
-    alert(`Logged in as ${username}`);
-    checkExistingUser(); // Refresh button visibility
+  if (rememberCheckbox.checked) {
+    localStorage.setItem("username", userVal);
+    localStorage.setItem("password", passVal);
+  } else {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+  }
+
+  alert(`Logged in as ${userVal}`);
+  updateUI();
 });
 
-// 3. Handle "Login as existing user" click
-existingBtn.addEventListener('click', () => {
-    const savedUsername = localStorage.getItem('username');
-    alert(`Logged in as ${savedUsername}`);
+// 3. Handle the "Login as existing user" button click
+existingBtn.addEventListener("click", () => {
+  const savedUser = localStorage.getItem("username");
+  alert(`Logged in as ${savedUser}`);
 });
 
-// Initial check when page loads
-checkExistingUser();
+// Run this on page load to check if we should show the button
+updateUI();
