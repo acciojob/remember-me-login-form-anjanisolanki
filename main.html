@@ -4,28 +4,28 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Heading Requirement -->
+    <!-- Heading: Requirement 1 -->
     <h1>Login Form</h1>
     
-    <form id="login-form">
-      <!-- Username Field -->
-      <label for="username">Username:</label>
-      <input type="text" id="username" placeholder="Username" required />
+    <form>
+      <!-- Username Field: ID username -->
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Username" />
       
-      <!-- Password Field -->
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="Password" required />
+      <!-- Password Field: ID password -->
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password" />
       
-      <!-- CRITICAL FIX: Text must be 'Remember me.' exactly for the test to pass -->
+      <!-- Checkbox: ID checkbox and exact label text -->
       <label for="checkbox">
-        <input type="checkbox" id="checkbox" /> Remember me.
+        <input type="checkbox" id="checkbox" />Remember me.
       </label>
       
-      <!-- Submit Button -->
+      <!-- Submit Button: ID submit -->
       <input type="submit" id="submit" value="Submit" />
     </form>
 
-    <!-- Hidden initially using inline style -->
+    <!-- Existing User Button: ID existing, hidden initially -->
     <button id="existing" style="display: none;">Login as existing user</button>
 
     <script type="text/javascript" src="./script.js"></script>
