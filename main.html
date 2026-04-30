@@ -4,28 +4,28 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Heading: Requirement 1 -->
+    <!-- Heading Requirement -->
     <h1>Login Form</h1>
     
-    <form>
-      <!-- Username Field: ID username -->
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Username" />
+    <form id="login-form">
+      <!-- Requirement: Label must contain "Username:" -->
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Username" required />
       
-      <!-- Password Field: ID password -->
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Password" />
+      <!-- Requirement: Label must contain "Password:" -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Password" required />
       
-      <!-- Checkbox: ID checkbox and exact label text -->
+      <!-- Requirement: Label must contain "Remember me." -->
       <label for="checkbox">
-        <input type="checkbox" id="checkbox" />Remember me.
+        <input type="checkbox" id="checkbox" /> Remember me.
       </label>
       
-      <!-- Submit Button: ID submit -->
+      <!-- Submit Button -->
       <input type="submit" id="submit" value="Submit" />
     </form>
 
-    <!-- Existing User Button: ID existing, hidden initially -->
+    <!-- Requirement: Hidden initially using inline style -->
     <button id="existing" style="display: none;">Login as existing user</button>
 
     <script type="text/javascript" src="./script.js"></script>

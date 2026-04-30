@@ -4,7 +4,10 @@ const rememberCheckbox = document.getElementById("checkbox");
 const submitBtn = document.getElementById("submit");
 const existingBtn = document.getElementById("existing");
 
-// Function to toggle button visibility based on localStorage
+/**
+ * UI Toggle Logic
+ * Controls the visibility of the 'existing' button based on localStorage.
+ */
 function updateUI() {
   if (localStorage.getItem("username")) {
     existingBtn.style.display = "block";
@@ -13,32 +16,36 @@ function updateUI() {
   }
 }
 
-// Form Submission Behavior
+/**
+ * Form Submission logic
+ */
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault(); 
+  event.preventDefault(); // Prevents page reload to allow alert and storage logic
 
-  const username = usernameInput.value;
-  const password = passwordInput.value;
+  const userVal = usernameInput.value;
+  const passVal = passwordInput.value;
 
   if (rememberCheckbox.checked) {
-    // Store credentials in localStorage
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+    localStorage.setItem("username", userVal);
+    localStorage.setItem("password", passVal);
   } else {
-    // Remove credentials if unchecked
+    // If checkbox is unchecked, remove stored data
     localStorage.removeItem("username");
     localStorage.removeItem("password");
   }
 
-  alert(`Logged in as ${username}`);
+  // Exact alert string required by Cypress
+  alert(`Logged in as ${userVal}`);
   updateUI();
 });
 
-// Existing User Login
+/**
+ * Existing User Login logic
+ */
 existingBtn.addEventListener("click", () => {
-  const savedUsername = localStorage.getItem("username");
-  alert(`Logged in as ${savedUsername}`);
+  const savedUser = localStorage.getItem("username");
+  alert(`Logged in as ${savedUser}`);
 });
 
-// Initial load check
+// Run check on page load for persistence across reloads
 updateUI();
