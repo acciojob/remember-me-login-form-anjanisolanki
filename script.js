@@ -5,9 +5,8 @@ const submitBtn = document.getElementById("submit");
 const existingBtn = document.getElementById("existing");
 
 /**
- * 1. UI Toggle Logic
- * Controls the visibility of the 'Login as existing user' button
- * based on whether credentials exist in localStorage.
+ * Requirement 2: Persisting Login Data
+ * Only shows the button if credentials exist in localStorage.
  */
 function updateUI() {
   if (localStorage.getItem("username")) {
@@ -18,37 +17,38 @@ function updateUI() {
 }
 
 /**
- * 2. Form Submission logic
- * Handles credential storage based on the checkbox status.
+ * Requirement 2: Form Submission Behavior
+ * Handles alert and conditional localStorage saving.
  */
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent page refresh to show alert
+  event.preventDefault(); 
 
   const userVal = usernameInput.value;
   const passVal = passwordInput.value;
 
   if (rememberCheckbox.checked) {
+    // Save credentials if checked
     localStorage.setItem("username", userVal);
     localStorage.setItem("password", passVal);
   } else {
-    // Requirements: If unchecked, remove any previously stored credentials
+    // Requirement 2: Remove credentials if unchecked
     localStorage.removeItem("username");
     localStorage.removeItem("password");
   }
 
-  // Exact alert string required by tests
+  // Alert as per requirement
   alert(`Logged in as ${userVal}`);
   updateUI();
 });
 
 /**
- * 3. Existing User Login
- * Alerts the username currently stored in localStorage.
+ * Requirement 2: Existing User Button
+ * Shows alert with saved username when clicked.
  */
 existingBtn.addEventListener("click", () => {
   const savedUser = localStorage.getItem("username");
   alert(`Logged in as ${savedUser}`);
 });
 
-// Run initial check on page load to set button visibility
+// Initial call on page load to check localStorage persistence
 updateUI();
