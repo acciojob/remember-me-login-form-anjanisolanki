@@ -5,8 +5,8 @@ const submitBtn = document.getElementById("submit");
 const existingBtn = document.getElementById("existing");
 
 /**
- * Requirement 2: Persisting Login Data
- * Only shows the button if credentials exist in localStorage.
+ * 1. UI Toggle Logic
+ * Only shows the 'existing user' button if data exists in localStorage.
  */
 function updateUI() {
   if (localStorage.getItem("username")) {
@@ -17,38 +17,38 @@ function updateUI() {
 }
 
 /**
- * Requirement 2: Form Submission Behavior
- * Handles alert and conditional localStorage saving.
+ * 2. Form Submission Behavior
+ * Handles alerts and localStorage management.
  */
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault(); 
+  event.preventDefault(); // Stop page refresh
 
   const userVal = usernameInput.value;
   const passVal = passwordInput.value;
 
   if (rememberCheckbox.checked) {
-    // Save credentials if checked
+    // Requirement: Store credentials if checked
     localStorage.setItem("username", userVal);
     localStorage.setItem("password", passVal);
   } else {
-    // Requirement 2: Remove credentials if unchecked
+    // Requirement: Remove credentials if unchecked
     localStorage.removeItem("username");
     localStorage.removeItem("password");
   }
 
-  // Alert as per requirement
+  // Exact alert string required by Cypress
   alert(`Logged in as ${userVal}`);
   updateUI();
 });
 
 /**
- * Requirement 2: Existing User Button
- * Shows alert with saved username when clicked.
+ * 3. Existing User Login
+ * Requirement: Alert with saved username.
  */
 existingBtn.addEventListener("click", () => {
   const savedUser = localStorage.getItem("username");
   alert(`Logged in as ${savedUser}`);
 });
 
-// Initial call on page load to check localStorage persistence
+// Run check on page load for persistence across reloads
 updateUI();

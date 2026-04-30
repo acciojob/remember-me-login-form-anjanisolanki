@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Heading as per requirement 1 -->
+    <!-- Heading Requirement -->
     <h1>Login Form</h1>
     
     <form id="login-form">
@@ -16,7 +16,7 @@
       <label for="password">Password:</label>
       <input type="password" id="password" placeholder="Password" required />
       
-      <!-- Checkbox with exact text from assignment -->
+      <!-- CRITICAL FIX: Text must be 'Remember me.' exactly for the test to pass -->
       <label for="checkbox">
         <input type="checkbox" id="checkbox" /> Remember me.
       </label>
@@ -25,7 +25,7 @@
       <input type="submit" id="submit" value="Submit" />
     </form>
 
-    <!-- Existing user button, hidden initially as per requirement 1 -->
+    <!-- Hidden initially using inline style -->
     <button id="existing" style="display: none;">Login as existing user</button>
 
     <script type="text/javascript" src="./script.js"></script>
